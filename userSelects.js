@@ -1,4 +1,5 @@
 import { selectComponent } from "./utils.js";
+import {fetchColorScheme} from "./script.js"
 
 const colorSelector = selectComponent("color-input");
 const schemeSelector = selectComponent("scheme-select");

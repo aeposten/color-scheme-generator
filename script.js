@@ -84,3 +84,6 @@ function renderColors(colors) {
 
 // Fetches default color scheme on page load
 fetchColorScheme(selectedColor, selectedScheme, selectedNumber);
+
+
+export {fetchColorScheme}
