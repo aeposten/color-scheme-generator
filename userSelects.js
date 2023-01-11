@@ -4,6 +4,11 @@ const colorSelector = selectComponent("color-input");
 const schemeSelector = selectComponent("scheme-select");
 const numSelector = selectComponent("num-select");
 
+let selectedColor = "FFDB58";
+let selectedScheme = "monochrome";
+let selectedNumber = 5;
+
+
 // Sets color selected by user
 function setSelectedColor() {
   selectedColor = colorSelector.value.slice(1);
