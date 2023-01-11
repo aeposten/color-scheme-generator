@@ -1,0 +1,8 @@
+.color-bar {
+    width: 50pxpx;
+    height: 100px;
+}
+
+.color-scheme {
+    display: flex;
+}
