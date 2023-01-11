@@ -74,6 +74,10 @@ h1 {
   cursor: pointer;
 }
 
+.hex:hover, hex:focus {
+    text-decoration: underline;
+}
+
 /* Formatting for text that appears when hex is copied */
 .hex-copied {
   text-align: center;
