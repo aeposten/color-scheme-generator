@@ -1,38 +1,24 @@
-const colorSelector = document.getElementById("color-input");
-const schemeSelector = document.getElementById("scheme-select");
-const numSelector = document.getElementById("num-select");
-const colorSchemeEl = document.getElementById("color-scheme");
-const hexCopiedEl = document.getElementById("hex-copied");
+import {
+  setSelectedColor,
+  setSelectedScheme,
+  setSelectedNumber,
+  setEventAction,
+  schemeSelector,
+  colorSelector,
+  numSelector,
+} from "./userSelects.js";
 
+import { selectComponent } from "./utils.js";
+
+const colorSchemeEl = selectComponent("color-scheme");
+const hexCopiedEl = selectComponent("hex-copied");
+
+// Default values to appear on page load. Will be changed based on used selection
 let selectedColor = "FFDB58";
 let selectedScheme = "monochrome";
 let selectedNumber = 5;
 
-let colorsArray = [];
-
-function setSelectedColor() {
-  selectedColor = colorSelector.value.slice(1);
-
-  return selectedColor;
-}
-
-function setSelectedScheme() {
-  selectedScheme = schemeSelector.value;
-
-  return selectedScheme;
-}
-
-function setSelectedNumber() {
-  selectedNumber = numSelector.value;
-
-  return selectedNumber;
-}
-
-function setEventAction(action) {
-  action();
-  fetchColorScheme(selectedColor, selectedScheme, selectedNumber);
-}
-
+// Event listeners for user selections
 schemeSelector.addEventListener("change", () => {
   setEventAction(setSelectedScheme);
 });
@@ -45,12 +31,14 @@ numSelector.addEventListener("change", () => {
   setEventAction(setSelectedNumber);
 });
 
+// Event to copy color color's hex value to clipboard
 document.addEventListener("click", function (e) {
   if (e.target.dataset.hex) {
     copyHex(e.target);
   }
 });
 
+// Copies hex to clipboard
 function copyHex(element) {
   let copiedHex = element.textContent;
 
@@ -66,6 +54,7 @@ function copyHex(element) {
   }
 }
 
+// Fetches color scheme from colors api based on user selections
 function fetchColorScheme(colorValue, scheme, count) {
   try {
     fetch(
@@ -78,6 +67,7 @@ function fetchColorScheme(colorValue, scheme, count) {
   }
 }
 
+// Renders colors on page
 function renderColors(colors) {
   colorSchemeEl.innerHTML = colors
     .map(
@@ -92,4 +82,5 @@ function renderColors(colors) {
     .join("");
 }
 
+// Fetches default color scheme on page load
 fetchColorScheme(selectedColor, selectedScheme, selectedNumber);
