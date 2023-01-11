@@ -67,11 +67,15 @@ function copyHex(element) {
 }
 
 function fetchColorScheme(colorValue, scheme, count) {
-  fetch(
-    `https://www.thecolorapi.com/scheme?hex=${colorValue}&mode=${scheme}&count=${count}`
-  )
-    .then((response) => response.json())
-    .then((data) => renderColors(data.colors));
+  try {
+    fetch(
+      `https://www.thecolorapi.com/scheme?hex=${colorValue}&mode=${scheme}&count=${count}`
+    )
+      .then((response) => response.json())
+      .then((data) => renderColors(data.colors));
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function renderColors(colors) {
