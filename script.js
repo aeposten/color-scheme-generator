@@ -34,10 +34,26 @@ numSelector.addEventListener("change", () => {
   setEventAction(setSelectedNumber);
 });
 
-// Event to copy color color's hex value to clipboard
 document.addEventListener("click", function (e) {
+  // Event to copy color color's hex value to clipboard
   if (e.target.dataset.hex) {
-    copyHex(e.target);
+    copyHex(e.target, hexCopiedEl);
+  }
+
+  if (e.target.dataset.hexsm) {
+    copyHex(
+      e.target,
+      e.target.parentElement.parentElement.parentElement.children.namedItem(
+        "hex"
+      )
+    );
+  }
+
+  // Deletes selected color scheme from local storage and renders saved schemes
+  if (e.target.dataset.delete) {
+    deleteSavedScheme(e.target.dataset.delete);
+    retrievedColors = JSON.parse(localStorage.getItem("savedSchemes"));
+    renderSavedSchemes(retrievedColors);
   }
 });
 
@@ -62,39 +78,42 @@ function setSelectedNumber() {
   return selectedNumber;
 }
 
+// Saves selected color scheme to local storage and then renders saved schemes
 saveBtn.addEventListener("click", () => {
   saveColorScheme(colorScheme);
   renderSavedSchemes(retrievedColors);
 });
 
-document.addEventListener("click", (e) => {
-  if (e.target.dataset.delete) {
-    deleteSavedScheme(e.target.dataset.delete);
-    renderSavedSchemes(retrievedColors);
-  }
-});
-
+// Sets color scheme variable for saving in local storage
 function setColorScheme(colors) {
   colorScheme = colors;
 }
 
+// For use in save button event listener, adds additional color schemes to local storage
 function saveColorScheme(scheme) {
+  // If colors are saved in local storgae, retrieve them and use them to set saved colors variable
   if (localStorage.getItem("savedSchemes")) {
     savedColors = JSON.parse(localStorage.getItem("savedSchemes"));
   }
+
+  // Add desired color scheme to saved colors array, then ave the array in local storage
   savedColors.push(scheme);
   localStorage.setItem("savedSchemes", JSON.stringify(savedColors));
 
+  // Get saved color schemes from local storage, parse the JSON and save the parsed array in retrievedColors
   retrievedColors = JSON.parse(localStorage.getItem("savedSchemes"));
-  console.log(retrievedColors);
 }
 
+// For use in delete button event listener, deletes color schemes from local storage
 function deleteSavedScheme(schemeIndex) {
+  // Retrieves saved colorschemes from local storage, parses JSON and stores array in savedColors
   savedColors = JSON.parse(localStorage.getItem("savedSchemes"));
+
+  // Removes scheme from savedColorsarray
   savedColors.splice(schemeIndex, 1);
 
+  // stores edited savedColors array to local storage
   localStorage.setItem("savedSchemes", JSON.stringify(savedColors));
-  retrievedColors = JSON.parse(localStorage.getItem("savedSchemes"));
 }
 
 function renderSavedSchemes(schemes) {
@@ -103,17 +122,20 @@ function renderSavedSchemes(schemes) {
       (scheme, index) =>
         `
       <li class="saved-scheme">
+        <div class="saved-colors">
         ${scheme
           .map(
             ({ hex }) =>
               `
             <div class="saved-color">
               <div class="color-square" style="background-color:${hex.value}"></div>
-              <div class="hex-small">${hex.value}</div>
+              <div class="hex-small" data-hexsm=${index}>${hex.value}</div>
             </div>
             `
           )
           .join("")}
+          </div>
+          <div class="hex-copied" data-copied=${index} name="hex"></div>
         <button class="delete-btn" id="selete-btn" data-delete=${index}>Delete Scheme</button>
       </li>
     `
@@ -134,14 +156,14 @@ function setEventAction(action) {
 }
 
 // Copies hex to clipboard
-function copyHex(element) {
+function copyHex(element, messageEl) {
   let copiedHex = element.textContent;
 
   try {
     navigator.clipboard.writeText(copiedHex).then(() => {
-      hexCopiedEl.textContent = `${copiedHex} Copied to Clipboard`;
+      messageEl.textContent = `${copiedHex} Copied to Clipboard`;
       setTimeout(() => {
-        hexCopiedEl.textContent = "";
+        messageEl.textContent = "";
       }, 3000);
     });
   } catch (error) {
