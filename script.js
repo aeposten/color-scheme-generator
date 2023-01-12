@@ -3,13 +3,17 @@ const schemeSelector = selectComponent("scheme-select");
 const numSelector = selectComponent("num-select");
 const colorSchemeEl = selectComponent("color-scheme");
 const hexCopiedEl = selectComponent("hex-copied");
+const saveBtn = selectComponent("save-btn");
+
+let colorScheme = [];
+let savedColors = [];
+let retrievedColors;
 
 //Dynamically selects component by id
 function selectComponent(elementId) {
   let component = document.getElementById(elementId);
   return component;
 }
-
 
 // Default values to appear on page load. Will be changed based on used selection
 let selectedColor = "FFDB58";
@@ -57,12 +61,31 @@ function setSelectedNumber() {
   return selectedNumber;
 }
 
+saveBtn.addEventListener("click", () => {
+  saveColorScheme(colorScheme);
+});
+
+function setColorScheme(colors) {
+  colorScheme = colors;
+}
+
+function saveColorScheme(scheme) {
+  savedColors.push(scheme);
+  localStorage.setItem("savedSchemes", JSON.stringify(savedColors));
+
+  retrievedColors = JSON.parse(localStorage.getItem("savedSchemes"));
+  console.log(retrievedColors);
+}
+
+function renderSavedSchemes(schemes) {
+  
+}
+
 // Sets specified user actions using functions above then uses fetch function to getcolor data from API
 function setEventAction(action) {
   action();
   fetchColorScheme(selectedColor, selectedScheme, selectedNumber);
 }
-
 
 // Copies hex to clipboard
 function copyHex(element) {
@@ -87,7 +110,10 @@ function fetchColorScheme(colorValue, scheme, count) {
       `https://www.thecolorapi.com/scheme?hex=${colorValue}&mode=${scheme}&count=${count}`
     )
       .then((response) => response.json())
-      .then((data) => renderColors(data.colors));
+      .then((data) => {
+        setColorScheme(data.colors);
+        renderColors(data.colors);
+      });
   } catch (error) {
     console.log(error);
   }
@@ -110,5 +136,3 @@ function renderColors(colors) {
 
 // Fetches default color scheme on page load
 fetchColorScheme(selectedColor, selectedScheme, selectedNumber);
-
-export { fetchColorScheme };
