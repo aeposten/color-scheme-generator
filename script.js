@@ -4,6 +4,7 @@ const numSelector = selectComponent("num-select");
 const colorSchemeEl = selectComponent("color-scheme");
 const hexCopiedEl = selectComponent("hex-copied");
 const saveBtn = selectComponent("save-btn");
+const savedSchemesList = selectComponent("schemes");
 
 let colorScheme = [];
 let savedColors = [];
@@ -63,6 +64,7 @@ function setSelectedNumber() {
 
 saveBtn.addEventListener("click", () => {
   saveColorScheme(colorScheme);
+  renderSavedSchemes(retrievedColors);
 });
 
 function setColorScheme(colors) {
@@ -70,6 +72,9 @@ function setColorScheme(colors) {
 }
 
 function saveColorScheme(scheme) {
+  if (localStorage.getItem("savedSchemes")) {
+    savedColors = JSON.parse(localStorage.getItem("savedSchemes"));
+  }
   savedColors.push(scheme);
   localStorage.setItem("savedSchemes", JSON.stringify(savedColors));
 
@@ -78,7 +83,28 @@ function saveColorScheme(scheme) {
 }
 
 function renderSavedSchemes(schemes) {
-  
+  const renderedSchemes = schemes.map(
+    (scheme) =>
+      `
+      <li class="saved-scheme">
+        ${scheme.map(
+          ({ hex }) =>
+            `
+            <div class="saved-color">
+              <div class="color-square" style="background-color:${hex.value}"></div>
+              <div class="hex-small">${hex.value}</div>
+            </div>
+            `
+        ).join("")}
+      </li>
+    `
+  ).join("");
+
+  savedSchemesList.innerHTML = `
+    <li>
+      ${renderedSchemes}
+    </li>
+  `;
 }
 
 // Sets specified user actions using functions above then uses fetch function to getcolor data from API
@@ -126,12 +152,16 @@ function renderColors(colors) {
       ({ hex, name }, index) => `
     <section class="color">
     <div class="color-bar" style="background-color:${hex.value}"></div>
-    <div class="color-name"></div>
     <div class="hex" data-hex="${index}">${hex.value}</div>
     </section>
     `
     )
     .join("");
+
+    if ((localStorage.getItem("savedSchemes"))) {
+      retrievedColors = JSON.parse(localStorage.getItem("savedSchemes"));
+      renderSavedSchemes(retrievedColors);
+    }
 }
 
 // Fetches default color scheme on page load

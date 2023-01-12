@@ -84,6 +84,57 @@ h1 {
   font-size: 0.75rem;
 }
 
+button {
+  width: 100%;
+  padding: 0.5em 0.75em;
+  border: 0.08em solid black;
+  background-color: white;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+}
+
+button:hover, button:focus {
+  font-weight: bold;
+}
+
+.schemes {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0;
+  list-style: none;
+}
+
+.saved-scheme {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.saved-color {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.color-square {
+  width: 20vw;
+  height: 20vw;
+}
+
+.hex-small {
+  text-align: center;
+  font-size: 0.625rem;
+}
+
+li {
+  list-style: none;
+}
+
 /* Media queries for responsive styling */
 @media (min-width: 768px) {
   .num-select {
