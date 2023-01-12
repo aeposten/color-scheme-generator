@@ -67,6 +67,13 @@ saveBtn.addEventListener("click", () => {
   renderSavedSchemes(retrievedColors);
 });
 
+document.addEventListener("click", (e) => {
+  if (e.target.dataset.delete) {
+    deleteSavedScheme(e.target.dataset.delete);
+    renderSavedSchemes(retrievedColors);
+  }
+});
+
 function setColorScheme(colors) {
   colorScheme = colors;
 }
@@ -82,23 +89,36 @@ function saveColorScheme(scheme) {
   console.log(retrievedColors);
 }
 
+function deleteSavedScheme(schemeIndex) {
+  savedColors = JSON.parse(localStorage.getItem("savedSchemes"));
+  savedColors.splice(schemeIndex, 1);
+
+  localStorage.setItem("savedSchemes", JSON.stringify(savedColors));
+  retrievedColors = JSON.parse(localStorage.getItem("savedSchemes"));
+}
+
 function renderSavedSchemes(schemes) {
-  const renderedSchemes = schemes.map(
-    (scheme) =>
-      `
+  const renderedSchemes = schemes
+    .map(
+      (scheme, index) =>
+        `
       <li class="saved-scheme">
-        ${scheme.map(
-          ({ hex }) =>
-            `
+        ${scheme
+          .map(
+            ({ hex }) =>
+              `
             <div class="saved-color">
               <div class="color-square" style="background-color:${hex.value}"></div>
               <div class="hex-small">${hex.value}</div>
             </div>
             `
-        ).join("")}
+          )
+          .join("")}
+        <button class="delete-btn" id="selete-btn" data-delete=${index}>Delete Scheme</button>
       </li>
     `
-  ).join("");
+    )
+    .join("");
 
   savedSchemesList.innerHTML = `
     <li>
@@ -158,10 +178,10 @@ function renderColors(colors) {
     )
     .join("");
 
-    if ((localStorage.getItem("savedSchemes"))) {
-      retrievedColors = JSON.parse(localStorage.getItem("savedSchemes"));
-      renderSavedSchemes(retrievedColors);
-    }
+  if (localStorage.getItem("savedSchemes")) {
+    retrievedColors = JSON.parse(localStorage.getItem("savedSchemes"));
+    renderSavedSchemes(retrievedColors);
+  }
 }
 
 // Fetches default color scheme on page load

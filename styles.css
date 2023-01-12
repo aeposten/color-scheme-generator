@@ -98,7 +98,6 @@ button:hover, button:focus {
 }
 
 .schemes {
-  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -109,20 +108,18 @@ button:hover, button:focus {
 }
 
 .saved-scheme {
-  width: 100%;
+  width: 100vw;
   display: flex;
-  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
 .saved-color {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1;
 }
 
 .color-square {
-  width: 20vw;
   height: 20vw;
 }
 
