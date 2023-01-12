@@ -1,17 +1,15 @@
-import {
-  setSelectedColor,
-  setSelectedScheme,
-  setSelectedNumber,
-  setEventAction,
-  schemeSelector,
-  colorSelector,
-  numSelector,
-} from "./userSelects.js";
-
-import { selectComponent } from "./utils.js";
-
+const colorSelector = selectComponent("color-input");
+const schemeSelector = selectComponent("scheme-select");
+const numSelector = selectComponent("num-select");
 const colorSchemeEl = selectComponent("color-scheme");
 const hexCopiedEl = selectComponent("hex-copied");
+
+//Dynamically selects component by id
+function selectComponent(elementId) {
+  let component = document.getElementById(elementId);
+  return component;
+}
+
 
 // Default values to appear on page load. Will be changed based on used selection
 let selectedColor = "FFDB58";
@@ -37,6 +35,34 @@ document.addEventListener("click", function (e) {
     copyHex(e.target);
   }
 });
+
+// Sets color selected by user
+function setSelectedColor() {
+  selectedColor = colorSelector.value.slice(1);
+
+  return selectedColor;
+}
+
+// Sets color scheme selected by user
+function setSelectedScheme() {
+  selectedScheme = schemeSelector.value;
+
+  return selectedScheme;
+}
+
+// Sets desired number of colors selected by user
+function setSelectedNumber() {
+  selectedNumber = numSelector.value;
+
+  return selectedNumber;
+}
+
+// Sets specified user actions using functions above then uses fetch function to getcolor data from API
+function setEventAction(action) {
+  action();
+  fetchColorScheme(selectedColor, selectedScheme, selectedNumber);
+}
+
 
 // Copies hex to clipboard
 function copyHex(element) {
