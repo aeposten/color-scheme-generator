@@ -67,7 +67,7 @@ h1 {
 }
 
 /* Formatting for hex value */
-.hex {
+.hex, .hex-small {
   margin: 1em 0;
   text-align: center;
   font-size: 0.625rem;
@@ -82,6 +82,7 @@ h1 {
 .hex-copied {
   text-align: center;
   font-size: 0.75rem;
+  margin-bottom: 0.5em;
 }
 
 button {
@@ -116,7 +117,6 @@ button:hover, button:focus {
 
 .saved-colors {
   display: flex;
-  margin-bottom: 1em;
 }
 
 .saved-color {
@@ -127,11 +127,6 @@ button:hover, button:focus {
 
 .color-square {
   height: 20vw;
-}
-
-.hex-small {
-  text-align: center;
-  font-size: 0.625rem;
 }
 
 li {
