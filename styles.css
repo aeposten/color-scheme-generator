@@ -92,6 +92,7 @@ button {
   background-color: white;
   font-family: "Inter", sans-serif;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 button:hover, button:focus {

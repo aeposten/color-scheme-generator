@@ -1,20 +1,14 @@
-const colorSelector = selectComponent("color-input");
-const schemeSelector = selectComponent("scheme-select");
-const numSelector = selectComponent("num-select");
-const colorSchemeEl = selectComponent("color-scheme");
-const hexCopiedEl = selectComponent("hex-copied");
-const saveBtn = selectComponent("save-btn");
-const savedSchemesList = selectComponent("schemes");
+const colorSelector = document.getElementById("color-input");
+const schemeSelector = document.getElementById("scheme-select");
+const numSelector = document.getElementById("num-select");
+const colorSchemeEl = document.getElementById("color-scheme");
+const hexCopiedEl = document.getElementById("hex-copied");
+const saveBtn = document.getElementById("save-btn");
+const savedSchemesList = document.getElementById("schemes");
 
 let colorScheme = [];
 let savedColors = [];
 let retrievedColors;
-
-//Dynamically selects component by id
-function selectComponent(elementId) {
-  let component = document.getElementById(elementId);
-  return component;
-}
 
 // Default values to appear on page load. Will be changed based on used selection
 let selectedColor = "FFDB58";
@@ -35,11 +29,12 @@ numSelector.addEventListener("change", () => {
 });
 
 document.addEventListener("click", function (e) {
-  // Event to copy color color's hex value to clipboard
+  // Event to copy  color's hex value to clipboard
   if (e.target.dataset.hex) {
     copyHex(e.target, hexCopiedEl);
   }
 
+  // Event to copy color's hex value from a saved color scheme
   if (e.target.dataset.hexsm) {
     copyHex(
       e.target,
@@ -116,35 +111,41 @@ function deleteSavedScheme(schemeIndex) {
   localStorage.setItem("savedSchemes", JSON.stringify(savedColors));
 }
 
-function renderSavedSchemes(schemes) {
+// Generates saved color scheme HTML from arrays saved in local storage
+function generateSavedSchemeHTML(schemes) {
   const renderedSchemes = schemes
     .map(
       (scheme, index) =>
         `
-      <li class="saved-scheme">
-        <div class="saved-colors">
-        ${scheme
-          .map(
-            ({ hex }) =>
-              `
-            <div class="saved-color">
-              <div class="color-square" style="background-color:${hex.value}"></div>
-              <div class="hex-small" data-hexsm=${index}>${hex.value}</div>
-            </div>
+    <li class="saved-scheme">
+      <div class="saved-colors">
+      ${scheme
+        .map(
+          ({ hex }) =>
             `
-          )
-          .join("")}
+          <div class="saved-color">
+            <div class="color-square" style="background-color:${hex.value}"></div>
+            <div class="hex-small" data-hexsm=${index}>${hex.value}</div>
           </div>
-          <div class="hex-copied" data-copied=${index} name="hex"></div>
-        <button class="delete-btn" id="selete-btn" data-delete=${index}>Delete Scheme</button>
-      </li>
-    `
+          `
+        )
+        .join("")}
+        </div>
+        <div class="hex-copied" data-copied=${index} name="hex"></div>
+      <button class="delete-btn" id="selete-btn" data-delete=${index}>Delete Scheme</button>
+    </li>
+  `
     )
     .join("");
 
+  return renderedSchemes;
+}
+
+// Renders saved color schemes on page
+function renderSavedSchemes(schemes) {
   savedSchemesList.innerHTML = `
     <li>
-      ${renderedSchemes}
+      ${generateSavedSchemeHTML(schemes)}
     </li>
   `;
 }
@@ -200,6 +201,7 @@ function renderColors(colors) {
     )
     .join("");
 
+  // If saved color schemes are found in local storage they are rendered on the page
   if (localStorage.getItem("savedSchemes")) {
     retrievedColors = JSON.parse(localStorage.getItem("savedSchemes"));
     renderSavedSchemes(retrievedColors);
