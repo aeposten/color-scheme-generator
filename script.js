@@ -45,13 +45,21 @@ numSelector.addEventListener("change", () => {
 
 // Toggles for light and dark modes
 darkModeBtn.addEventListener("click", () => {
-  mode = "dark";
   toggleMode();
+  mode = "dark";
+  darkModeBtn.disabled = true;
+  lightModeBtn.disabled = false;
 });
 
 lightModeBtn.addEventListener("click", () => {
-  mode = "light";
+  if (mode === "light") {
+    lightModeBtn.disabled = true;
+    darkModeBtn.disabled = false;
+  }
   toggleMode();
+  mode = "light";
+  lightModeBtn.disabled = true;
+  darkModeBtn.disabled = false;
 });
 
 // Toggles darkmode
