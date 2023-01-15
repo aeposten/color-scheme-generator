@@ -250,4 +250,15 @@ li {
     width: 80vw;
     height: 40px;
   }
+  .color-input {
+    min-width: 2em;
+  }
+
+  .scheme-select {
+    max-width: 8em;
+  }
+
+  .btn {
+    padding: 0.25em 0.37em;
+  }
 }
