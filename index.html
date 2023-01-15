@@ -9,7 +9,16 @@
     <header>
       <h1>Color Scheme Generator</h1>
       <section class="selects">
-        <input type="color" id="color-input" class="color-input"/>
+        <label for="color-input" class="visually-hidden">choose a color</label>
+        <input
+          type="color"
+          id="color-input"
+          class="color-input"
+          value="#FFDB58"
+        />
+        <label for="scheme-select" class="visually-hidden"
+          >choose a color scheme</label
+        >
         <select name="scheme" id="scheme-select" class="scheme-select">
           <option value="monochrome">Monochrome</option>
           <option value="monochrome-dark">Monochrome Dark</option>
@@ -20,6 +29,7 @@
           <option value="triad">Triad</option>
           <option value="quad">Quad</option>
         </select>
+        <label for="num-select" class="visually-hidden">how many colors in scheme</label>
         <select name="num-colors" id="num-select" class="num-select">
           <option value="5">5</option>
           <option value="6">6</option>
