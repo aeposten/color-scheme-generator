@@ -187,7 +187,7 @@ function generateSavedSchemeHTML(schemes) {
         .join("")}
         </div>
         <div class="hex-copied" data-copied=${index} name="hex"></div>
-      <button class="delete-btn" id="selete-btn" data-delete=${index}>Delete Scheme</button>
+      <button class="delete-btn btn" id="selete-btn" data-delete=${index}>Delete Scheme</button>
     </li>
   `
     )

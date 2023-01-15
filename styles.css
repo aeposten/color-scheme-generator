@@ -16,6 +16,11 @@ body {
   margin: 0;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+}
+
 /* Formatting for header */
 header {
   display: flex;
@@ -62,6 +67,10 @@ h1 {
   width: 60vw;
 }
 
+input:hover, input:focus, select:hover, select:focus {
+  border: 0.25em solid black;
+}
+
 /* Formatting for element that displays entire scheme */
 .color-scheme {
   width: 100vw;
@@ -98,7 +107,6 @@ h1 {
 .hex-copied {
   text-align: center;
   font-size: 0.75rem;
-  margin-bottom: 0.5em;
 }
 
 /* Formatting for all button elements */
@@ -154,7 +162,7 @@ li {
 }
 
 /* Media queries for responsive styling */
-@media (min-width: 768px) {
+@media (min-width: 500px) {
   .num-select {
     width: 20vw;
   }
@@ -166,6 +174,12 @@ li {
   .hex-copied {
     font-size: 1rem;
   }
+
+  .btn {
+    margin: 0 auto;
+    width: 15em;
+  }
+  
 }
 
 @media (max-width: 500px) {
@@ -188,5 +202,6 @@ li {
   width: 80vw;
   height: 40px;
 }
+
 
 }
