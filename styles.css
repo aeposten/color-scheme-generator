@@ -74,6 +74,24 @@ h1 {
   background-color: white;
 }
 
+.scheme-select {
+  border-right: none;
+}
+
+.num-select {
+  border-left: none;
+  border-right: none;
+}
+
+.light-btn {
+  border-left: 0;
+  border-right: 0;
+}
+
+.dark-btn {
+  border-left: none;
+}
+
 select {
   width: 60vw;
   border: 0.08em solid var(--darkGrey);
