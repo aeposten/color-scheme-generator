@@ -203,6 +203,15 @@ li {
   border: 0.15em solid white;
 }
 
+.mode-btn {
+  height: 100%;
+  margin: 0;
+}
+
+.save-btn, .delete-btn {
+  margin-top: 0.5em;
+}
+
 /* Media queries for responsive styling */
 @media (min-width: 500px) {
   .num-select {
@@ -227,8 +236,12 @@ li {
   }
 
   .btn {
-    margin: 0.5em auto;
+    margin: 0 auto;
     width: 15em;
+  }
+
+  .save-btn, .delete-btn {
+    margin-top: 0.5em;
   }
 }
 
@@ -262,4 +275,10 @@ li {
   .btn {
     padding: 0.25em 0.37em;
   }
+
+  .mode-btn {
+    height: 100%;
+    margin: 0;
+  }
+  
 }
