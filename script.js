@@ -223,7 +223,7 @@ function generateSavedSchemeHTML(schemes) {
             `
           <div class="saved-color">
             <div class="color-square" style="background-color:${hex.value}"></div>
-            <div class="hex-small" data-hexsm=${index}  style="background-color:${hex.value}; margin-top: 0; color:#313638;" id="small-hex">${hex.value}</div>
+            <div class="hex-small" data-hexsm=${index}  style="background-color:${hex.value}; margin-top: 0; color:#313638; opacity:80%;" id="small-hex">${hex.value}</div>
           </div>
           `
         )
