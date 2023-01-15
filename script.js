@@ -1,3 +1,6 @@
+const body = document.body;
+const selectEl = document.querySelectorAll("select");
+const inputEl = document.input;
 const colorSelector = document.getElementById("color-input");
 const schemeSelector = document.getElementById("scheme-select");
 const numSelector = document.getElementById("num-select");
@@ -5,6 +8,8 @@ const colorSchemeEl = document.getElementById("color-scheme");
 const hexCopiedEl = document.getElementById("hex-copied");
 const saveBtn = document.getElementById("save-btn");
 const savedSchemesList = document.getElementById("schemes");
+const lightModeBtn = document.getElementById("light-mode");
+const darkModeBtn = document.getElementById("dark-mode");
 
 let colorScheme = [];
 let savedColors = [];
@@ -36,6 +41,29 @@ colorSelector.addEventListener("input", () => {
 numSelector.addEventListener("change", () => {
   setEventAction(setSelectedNumber);
 });
+
+// Toggles for light and dark modes
+darkModeBtn.addEventListener("click", () => {
+  const btns = document.querySelectorAll("button")
+  body.classList.add("dark")
+  selectEl.forEach(select => {
+  select.classList.add('dark-select');
+})
+  btns.forEach(btn => {
+    btn.classList.add('dark-btn');
+})
+})
+
+lightModeBtn.addEventListener("click", () => {
+  const btns = document.querySelectorAll("button")
+  body.classList.remove("dark")
+  selectEl.forEach(select => {
+    select.classList.remove('dark-select');
+  })
+  btns.forEach(btn => {
+    btn.classList.remove('dark-btn');
+});
+})
 
 // Sets color selected by user
 function setSelectedColor() {
@@ -187,7 +215,7 @@ function generateSavedSchemeHTML(schemes) {
         .join("")}
         </div>
         <div class="hex-copied" data-copied=${index} name="hex"></div>
-      <button class="delete-btn btn" id="selete-btn" data-delete=${index}>Delete Scheme</button>
+      <button class="delete-btn btn" data-delete=${index}>Delete Scheme</button>
     </li>
   `
     )

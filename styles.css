@@ -19,12 +19,17 @@ body {
 main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Formatting for header */
 header {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   z-index: 2;
   box-shadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.25);
 }
@@ -61,14 +66,21 @@ h1 {
   width: 2.5em;
   height: 2.5em;
   padding: 0.2em;
+  border: 0.08em solid black;
+  background-color: white;
 }
 
-.scheme-select {
+select {
   width: 60vw;
+  border: 0.08em solid black;
+  background-color: white;
 }
 
-input:hover, input:focus, select:hover, select:focus {
-  border: 0.25em solid black;
+input:hover,
+input:focus,
+select:hover,
+select:focus {
+  border: 0.15em solid black;
 }
 
 /* Formatting for element that displays entire scheme */
@@ -92,15 +104,19 @@ input:hover, input:focus, select:hover, select:focus {
 }
 
 /* Formatting for hex value */
-.hex, .hex-small {
+.hex,
+.hex-small {
   margin: 1em 0;
   text-align: center;
   font-size: 0.625rem;
   cursor: pointer;
 }
 
-.hex:hover, .hex:focus, .hex-small:hover, .hex-small:focus {
-    text-decoration: underline;
+.hex:hover,
+.hex:focus,
+.hex-small:hover,
+.hex-small:focus {
+  text-decoration: underline;
 }
 
 /* Formatting for text that appears when hex is copied */
@@ -110,7 +126,7 @@ input:hover, input:focus, select:hover, select:focus {
 }
 
 /* Formatting for all button elements */
-button {
+.btn {
   width: 100%;
   padding: 0.5em 0.75em;
   border: 0.08em solid black;
@@ -120,8 +136,12 @@ button {
   box-sizing: border-box;
 }
 
-button:hover, button:focus {
+.btn:hover,
+.btn:focus {
+  box-sizing: border-box;
+  border: 0.15em solid black;
   font-weight: bold;
+  box-sizing: border-box;
 }
 
 /* Formatting for saved schemes section */
@@ -161,13 +181,43 @@ li {
   list-style: none;
 }
 
+.dark {
+  background-color: black;
+  color: white;
+}
+
+.dark-btn,
+.dark-select {
+  border: 0.08em solid white;
+  background-color: black;
+  color: white;
+  box-sizing: border-box;
+}
+
+.dark-btn:hover,
+.dark-btn:focus,
+.dark-select:hover,
+.dark-select:focus {
+  box-sizing: border-box;
+  border: 0.15em solid white;
+}
+
 /* Media queries for responsive styling */
 @media (min-width: 500px) {
   .num-select {
     width: 20vw;
   }
 
-  .hex, .hex-small {
+  .color-scheme {
+    width: 70vw;
+  }
+
+  header {
+    margin: 0 auto;
+  }
+
+  .hex,
+  .hex-small {
     font-size: 1rem;
   }
 
@@ -179,29 +229,25 @@ li {
     margin: 0 auto;
     width: 15em;
   }
-  
 }
 
 @media (max-width: 500px) {
+  .color-scheme {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-.color-scheme {
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
+  .color {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
 
-.color {
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.color-bar {
-  margin: 0 1em 0 0;
-  width: 80vw;
-  height: 40px;
-}
-
-
+  .color-bar {
+    margin: 0 1em 0 0;
+    width: 80vw;
+    height: 40px;
+  }
 }
