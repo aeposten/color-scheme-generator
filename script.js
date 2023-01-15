@@ -11,6 +11,7 @@ const savedSchemesList = document.getElementById("schemes");
 const lightModeBtn = document.getElementById("light-mode");
 const darkModeBtn = document.getElementById("dark-mode");
 
+let mode = "light";
 let colorScheme = [];
 let savedColors = [];
 let retrievedColors;
@@ -44,26 +45,26 @@ numSelector.addEventListener("change", () => {
 
 // Toggles for light and dark modes
 darkModeBtn.addEventListener("click", () => {
-  const btns = document.querySelectorAll("button")
-  body.classList.add("dark")
-  selectEl.forEach(select => {
-  select.classList.add('dark-select');
-})
-  btns.forEach(btn => {
-    btn.classList.add('dark-btn');
-})
-})
+  mode = "dark";
+  toggleMode();
+});
 
 lightModeBtn.addEventListener("click", () => {
-  const btns = document.querySelectorAll("button")
-  body.classList.remove("dark")
-  selectEl.forEach(select => {
-    select.classList.remove('dark-select');
-  })
-  btns.forEach(btn => {
-    btn.classList.remove('dark-btn');
+  mode = "light";
+  toggleMode();
 });
-})
+
+// Toggles darkmode
+function toggleMode() {
+  const btns = document.querySelectorAll("button");
+  body.classList.toggle("dark");
+  selectEl.forEach((select) => {
+    select.classList.toggle(`dark-select`);
+  });
+  btns.forEach((btn) => {
+    btn.classList.toggle(`dark-btn`);
+  });
+}
 
 // Sets color selected by user
 function setSelectedColor() {
@@ -231,4 +232,14 @@ function renderSavedSchemes(schemes) {
       ${generateSavedSchemeHTML(schemes)}
     </li>
   `;
+  if (mode === "dark") {
+    const btns = document.querySelectorAll("button");
+    body.classList.add("dark");
+    selectEl.forEach((select) => {
+      select.classList.add("dark-select");
+    });
+    btns.forEach((btn) => {
+      btn.classList.add("dark-btn");
+    });
+  }
 }
