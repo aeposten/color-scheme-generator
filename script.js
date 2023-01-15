@@ -48,24 +48,24 @@ darkModeBtn.addEventListener("click", () => {
   toggleMode();
   mode = "dark";
   darkModeBtn.disabled = true;
-  darkModeBtn.classList.add("disabled")
+  darkModeBtn.classList.add("disabled");
   lightModeBtn.disabled = false;
-  lightModeBtn.classList.remove("disabled")
+  lightModeBtn.classList.remove("disabled");
 });
 
 lightModeBtn.addEventListener("click", () => {
   if (mode === "light") {
     lightModeBtn.disabled = true;
-    lightModeBtn.classList.add("disabled")
+    lightModeBtn.classList.add("disabled");
     darkModeBtn.disabled = false;
-    darkModeBtn.classList.remove("disabled")
+    darkModeBtn.classList.remove("disabled");
   }
   toggleMode();
   mode = "light";
   lightModeBtn.disabled = true;
-  lightModeBtn.classList.add("disabled")
+  lightModeBtn.classList.add("disabled");
   darkModeBtn.disabled = false;
-  darkModeBtn.classList.remove("disabled")
+  darkModeBtn.classList.remove("disabled");
 });
 
 // Toggles darkmode
@@ -124,7 +124,7 @@ function renderColors(colors) {
       ({ hex, name }, index) => `
     <section class="color">
     <div class="color-bar" style="background-color:${hex.value}"></div>
-    <div class="hex" data-hex="${index}">${hex.value}</div>
+    <div id="hex" class="hex" data-hex="${index}" style="background-color:${hex.value}; opacity: 90%; margin-top: 0; color: #313638;">${hex.value}</div>
     </section>
     `
     )
@@ -223,7 +223,7 @@ function generateSavedSchemeHTML(schemes) {
             `
           <div class="saved-color">
             <div class="color-square" style="background-color:${hex.value}"></div>
-            <div class="hex-small" data-hexsm=${index}>${hex.value}</div>
+            <div class="hex-small" data-hexsm=${index}  style="background-color:${hex.value}; margin-top: 0; color:#313638;" id="small-hex">${hex.value}</div>
           </div>
           `
         )
