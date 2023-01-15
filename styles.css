@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap");
 
+:root {
+  --darkGrey: #313638;
+}
+
+
 /* Grouping frequently used properties */
 .scheme,
 .num-colors,
@@ -66,13 +71,13 @@ h1 {
   width: 2.5em;
   height: 2.5em;
   padding: 0.2em;
-  border: 0.08em solid black;
+  border: 0.08em solid var(--darkGrey);
   background-color: white;
 }
 
 select {
   width: 60vw;
-  border: 0.08em solid black;
+  border: 0.08em solid var(--darkGrey);;
   background-color: white;
 }
 
@@ -80,7 +85,7 @@ input:hover,
 input:focus,
 select:hover,
 select:focus {
-  border: 0.15em solid black;
+  border: 0.15em solid var(--darkGrey);;
 }
 
 /* Formatting for element that displays entire scheme */
@@ -130,7 +135,7 @@ select:focus {
   width: 100%;
   margin-top: 0.5em;
   padding: 0.5em 0.75em;
-  border: 0.08em solid black;
+  border: 0.08em solid var(--darkGrey);;
   background-color: white;
   font-family: "Inter", sans-serif;
   cursor: pointer;
@@ -183,7 +188,7 @@ li {
 }
 
 .dark {
-  background-color: black;
+  background-color: var(--darkGrey);;
   color: white;
 }
 
@@ -191,7 +196,7 @@ li {
 .dark-btn,
 .dark-select {
   border: 0.08em solid white;
-  background-color: black;
+  background-color: var(--darkGrey);;
   color: white;
   box-sizing: border-box;
 }
