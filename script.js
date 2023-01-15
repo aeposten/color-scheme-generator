@@ -48,18 +48,24 @@ darkModeBtn.addEventListener("click", () => {
   toggleMode();
   mode = "dark";
   darkModeBtn.disabled = true;
+  darkModeBtn.classList.add("disabled")
   lightModeBtn.disabled = false;
+  lightModeBtn.classList.remove("disabled")
 });
 
 lightModeBtn.addEventListener("click", () => {
   if (mode === "light") {
     lightModeBtn.disabled = true;
+    lightModeBtn.classList.add("disabled")
     darkModeBtn.disabled = false;
+    darkModeBtn.classList.remove("disabled")
   }
   toggleMode();
   mode = "light";
   lightModeBtn.disabled = true;
+  lightModeBtn.classList.add("disabled")
   darkModeBtn.disabled = false;
+  darkModeBtn.classList.remove("disabled")
 });
 
 // Toggles darkmode

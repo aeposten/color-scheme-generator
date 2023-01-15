@@ -208,8 +208,15 @@ li {
   margin: 0;
 }
 
-.save-btn, .delete-btn {
+.save-btn,
+.delete-btn {
   margin-top: 0.5em;
+}
+
+.disabled {
+  background-color: lightgray;
+  color: white;
+  cursor: not-allowed;
 }
 
 /* Media queries for responsive styling */
@@ -240,7 +247,8 @@ li {
     width: 15em;
   }
 
-  .save-btn, .delete-btn {
+  .save-btn,
+  .delete-btn {
     margin-top: 0.5em;
   }
 }
@@ -280,5 +288,4 @@ li {
     height: 100%;
     margin: 0;
   }
-  
 }
