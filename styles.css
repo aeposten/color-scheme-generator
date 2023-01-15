@@ -187,6 +187,7 @@ li {
   color: white;
 }
 
+/* Formatting for light and dark mode buttons */
 .dark-btn,
 .dark-select {
   border: 0.08em solid white;
