@@ -47,26 +47,25 @@ numSelector.addEventListener("change", () => {
 darkModeBtn.addEventListener("click", () => {
   toggleMode();
   mode = "dark";
-  darkModeBtn.disabled = true;
-  darkModeBtn.classList.add("disabled");
-  lightModeBtn.disabled = false;
-  lightModeBtn.classList.remove("disabled");
+  disableModeButtons(darkModeBtn, lightModeBtn)
 });
 
 lightModeBtn.addEventListener("click", () => {
   if (mode === "light") {
-    lightModeBtn.disabled = true;
-    lightModeBtn.classList.add("disabled");
-    darkModeBtn.disabled = false;
-    darkModeBtn.classList.remove("disabled");
+    disableModeButtons(lightModeBtn, darkModeBtn)
   }
   toggleMode();
   mode = "light";
-  lightModeBtn.disabled = true;
-  lightModeBtn.classList.add("disabled");
-  darkModeBtn.disabled = false;
-  darkModeBtn.classList.remove("disabled");
+  disableModeButtons(lightModeBtn, darkModeBtn)
 });
+
+// Adds and removes "disabled" attribute from buttons
+function disableModeButtons(disabledButton, enabledButton) {
+  disabledButton.disabled = true;
+  disabledButton.classList.add("disabled");
+  enabledButton.disabled = false;
+  enabledButton.classList.remove("disabled");
+}
 
 // Toggles darkmode
 function toggleMode() {
