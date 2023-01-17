@@ -2,6 +2,7 @@
 
 :root {
   --darkGrey: #313638;
+  --lightGrey: #CCCCCC;
 }
 
 /* Grouping frequently used properties */
@@ -18,6 +19,7 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0;
+  background-color: var(--lightGrey);
 }
 
 main {
@@ -71,7 +73,7 @@ h1 {
   height: 2.5em;
   padding: 0.2em;
   border: 0.08em solid var(--darkGrey);
-  background-color: white;
+  background-color: var(--lightGrey);
 }
 
 .scheme-select {
@@ -95,7 +97,7 @@ h1 {
 select {
   width: 60vw;
   border: 0.08em solid var(--darkGrey);
-  background-color: white;
+  background-color: var(--lightGrey)
 }
 
 input:hover,
@@ -153,7 +155,7 @@ select:focus {
   margin-top: 0.5em;
   padding: 0.5em 0.75em;
   border: 0.08em solid var(--darkGrey);
-  background-color: white;
+  background-color: var(--lightGrey);
   font-family: "Inter", sans-serif;
   cursor: pointer;
   box-sizing: border-box;
@@ -206,15 +208,15 @@ li {
 
 .dark {
   background-color: var(--darkGrey);
-  color: white;
+  color: var(--lightGrey);
 }
 
 /* Formatting for light and dark mode buttons */
 .dark-btn,
 .dark-select {
-  border: 0.08em solid white;
+  border: 0.08em solid var(--lightGrey);
   background-color: var(--darkGrey);
-  color: white;
+  color: var(--lightGrey);
   box-sizing: border-box;
 }
 
@@ -223,7 +225,7 @@ li {
 .dark-select:hover,
 .dark-select:focus {
   box-sizing: border-box;
-  border: 0.15em solid white;
+  border: 0.15em solid var(--lightGrey);
 }
 
 .mode-btn {
@@ -237,7 +239,7 @@ li {
 }
 
 .disabled {
-  background-color: lightgray;
+  background-color: darkgray;
   color: white;
   cursor: not-allowed;
 }

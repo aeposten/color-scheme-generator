@@ -47,16 +47,16 @@ numSelector.addEventListener("change", () => {
 darkModeBtn.addEventListener("click", () => {
   toggleMode();
   mode = "dark";
-  disableModeButtons(darkModeBtn, lightModeBtn)
+  disableModeButtons(darkModeBtn, lightModeBtn);
 });
 
 lightModeBtn.addEventListener("click", () => {
   if (mode === "light") {
-    disableModeButtons(lightModeBtn, darkModeBtn)
+    disableModeButtons(lightModeBtn, darkModeBtn);
   }
   toggleMode();
   mode = "light";
-  disableModeButtons(lightModeBtn, darkModeBtn)
+  disableModeButtons(lightModeBtn, darkModeBtn);
 });
 
 // Adds and removes "disabled" attribute from buttons
