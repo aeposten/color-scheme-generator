@@ -37,7 +37,7 @@
 
 ### What I learned
 
-I've recently updated this project to use React. Here, you can view the [Deployed Version](https://aeposten.github.io/color-scheme-generator/) and [Github Repository](https://github.com/aeposten/color-scheme-generator) for the React version of this project, and below is a screenshot comparing both versions.
+I've recently updated this project to use React. Here, you can view the [Deployed Version](https://color-scheme-react.netlify.app) and [Github Repository](https://github.com/aeposten/color-scheme-generator-react) for the React version of this project, and below is a screenshot comparing both versions.
 ![Comparison](/comparison.png "Comparison")
 
 ## Author
