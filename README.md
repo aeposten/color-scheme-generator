@@ -1,6 +1,6 @@
 # Color Scheme Generator
 
-[Color Scheme Generator](https://aeposten.github.io/color-scheme-generator/)an application using the [The Color API](https://www.thecolorapi.com/) that allows the user to save and generate color schemes based on a selected color value.
+[Color Scheme Generator](https://aeposten.github.io/color-scheme-generator/) an application using the [The Color API](https://www.thecolorapi.com/) that allows the user to save and generate color schemes based on a selected color value.
 
 ## Table of contents
 
