@@ -17,7 +17,7 @@
 
 ### Screenshot
 
-![Desktop](s/desktop.png "Desktop")
+![Desktop](/desktop.png "Desktop")
 ![Mobile](/mobile.png "Mobile")
 
 ### Links
