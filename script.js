@@ -110,6 +110,7 @@ function fetchColorScheme(colorValue, scheme, count) {
       .then((data) => {
         setColorScheme(data.colors);
         renderColors(data.colors);
+        console.log(data.colors)
       });
   } catch (error) {
     console.log(error);

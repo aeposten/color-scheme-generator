@@ -1,1 +1,57 @@
-# color-scheme-generator
+# Color Scheme Generator
+
+[Color Scheme Generator](https://aeposten.github.io/color-scheme-generator/)an application using the [The Color API](https://www.thecolorapi.com/) that allows the user to save and generate color schemes based on a selected color value.
+
+## Table of contents
+
+- [Overview](#overview)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+  - [Available Commands](#available-commands)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+- [Author](#author)
+
+## Overview
+
+### Screenshot
+
+![Desktop](s/desktop.png "Desktop")
+![Mobile](/mobile.png "Mobile")
+
+### Links
+
+- [Live Site](https://aeposten.github.io/color-scheme-generator "Live View")
+- [Project Repository](https://github.com/aeposten/color-scheme-generator "Color Scheme Generator Repo")
+
+### Available Commands
+In the project directory, you can run:
+
+### `npm start" : "react-scripts start"`,
+
+The app is built using `create-react-app` so this command Runs the app in Development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser. You also need to run the server file as well to completely run the app. The page will reload if you make edits.
+You will also see any lint errors in the console.
+
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- Mobile-first workflow
+- CSS custom properties
+- Flexbox
+- [LocalStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+- [The Color API](https://www.thecolorapi.com/ "The Color API")
+
+### What I learned
+
+I've recently updated this project to use React. Here, you can view the [Deployed Version](https://aeposten.github.io/color-scheme-generator/) and [Github Repository](https://github.com/aeposten/color-scheme-generator) for the React version of this project, and below is a screenshot comparing both versions.
+![Comparison](/comparison.png "Comparison")
+
+## Author
+
+- Reach Out Via Email - [amy@amyposten.io](mailto:amy@amyposten.io)
+- Connect on Linkedin - [@aeposten](https://www.linkedin.com/in/aeposten/)
+
+
